@@ -1,0 +1,4 @@
+/*
+ * Class Blog configuration file
+ */
+name:"blog",version:"1.0.0",tbl_name:"blog",instantiable:"1",description:"Blog",removable:"1",folders:"contents/blog"
