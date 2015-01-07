@@ -363,7 +363,7 @@ class blog extends \Gino\Controller {
                 if(!isset($tree_array[$eyear][$emonth])) {
                     $tree_array[$eyear][$emonth] = array();
                 }
-                $tree_array[$eyear][$emonth][] = "<a href=\"".$this->link($this->_instance_name, 'archive', array('id'=>$entry->slug))."\">".\Gino\htmlChars($entry->ml('title'))."</a>";
+                $tree_array[$eyear][$emonth][] = "<a href=\"".$this->link($this->_instance_name, 'detail', array('id'=>$entry->slug))."\">".\Gino\htmlChars($entry->ml('title'))."</a>";
             }
         }
 
