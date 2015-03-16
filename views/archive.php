@@ -6,6 +6,7 @@
  *
  * Variabili disponibili:
  * - **instance_name**: nome dell'istanza
+ * - **locale**: oggetto Locale
  * - **subtitle**: sottotitolo (se si tratta di una lista per tag, specifica quale tag)
  * - **feed_url**: url feed rss
  * - **entries**: array di oggetti BlogEntry
@@ -28,7 +29,7 @@
         <div class="col-md-7">
             <section>
                 <header>
-                    <h1 class="left"><?= _('Blog') ?></h1>
+                    <h1 class="left"><?= ucfirst($locale->get('blog')) ?></h1>
                     <a href="<?= $feed_url ?>" class="fa fa-2x fa-rss pull-right feed"></a>
                     <div class="null"></div>
                     <? if($subtitle): ?>
@@ -39,7 +40,7 @@
                     <? foreach($entries as $entry): ?>
                         <article>
                             <header>
-                                <h1><a href="<?php echo $entry->getUrl() ?>"><?= $entry->title ?></a></h1>
+                                <h1><a href="<?php echo $entry->getUrl() ?>"><?= $entry->ml('title') ?></a></h1>
                                 <div class="blog-post-info">
                                     <p><span class="fa fa-calendar pull-left"></span> <time pubdate><?= \Gino\dbDatetimeToDate($entry->creation_date, '/') ?></time> 
                                     <span class="pipe">|</span> 
@@ -50,13 +51,13 @@
                                     <?php endif ?>
                                 </div>
                             </header>
-                            <?= \Gino\cutHtmlText(\Gino\htmlChars($entry->text), 420, "<a href=\"".$entry->getUrl()."\" class=\"btn btn-primary\">"._('continua')." &raquo;</a>", false, false, true, null) ?>
+                            <?= \Gino\cutHtmlText(\Gino\htmlChars($entry->ml('text')), 420, "<a href=\"".$entry->getUrl()."\" class=\"btn btn-primary\">"._('continua')." &raquo;</a>", false, false, true, null) ?>
                         </article>
                         <hr />
                     <? endforeach ?>
                     <?= $pagination ?>
                 <? else: ?>
-                    <p><?= _('Non risultano post') ?></p>
+                    <p><?= $locale->get('no_results') ?></p>
                 <? endif ?>
             </section>
 

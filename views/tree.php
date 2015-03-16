@@ -6,6 +6,7 @@
  *
  * Variabili disponibili:
  * - **instance_name**: nome dell'istanza
+ * - **locale**: oggetto Locale
  * - **tree_array**: array associativo dell'albero di post array($year=>array($month=>array($entry1, $entry2, ...)))
  *
  * @version 1.0.0
@@ -16,7 +17,7 @@
 ?>
 <? namespace Gino\App\Blog; ?>
 <section id="blog-tree-<?= $instance_name ?>">
-<h1><?= _('Archivio') ?></h1>
+<h1><?= ucfirst($locale->get('archive')) ?></h1>
 <? if(count($tree_array)): ?>
 	<ul>
 	<? foreach($tree_array as $year => $month_array): ?>
