@@ -327,6 +327,7 @@ class blog extends \Gino\Controller {
         
         $dict = array(
             'instance_name' => $this->_instance_name,
+            'locale' => $this->_locale, 
         	'feed_url' => $this->link($this->_instance_name, 'feedRSS'), 
         	'entries' => $entries, 
         	'archive_url' => $this->link($this->_instance_name, 'archive')
@@ -372,6 +373,7 @@ class blog extends \Gino\Controller {
         
         $dict = array(
             'instance_name' => $this->_instance_name, 
+            'locale' => $this->_locale, 
         	'tree_array' => $tree_array
         );
 
@@ -386,8 +388,7 @@ class blog extends \Gino\Controller {
      */
     public function archive(\Gino\Http\Request $request) {
 
-        $title = _('Archivio blog').' | '.$this->_registry->sysconf->head_title;
-
+        $title = $this->_locale->get('meta_archive_title').' | '.$this->_registry->sysconf->head_title;
         $this->_registry->addCss($this->_class_www."/blog_".$this->_instance_name.".css");
         $this->_registry->title = \Gino\jsVar($title);
         $this->_registry->addHeadLink(array(
@@ -414,6 +415,7 @@ class blog extends \Gino\Controller {
         
         $dict = array(
             'instance_name' => $this->_instance_name,
+            'locale' => $this->_locale, 
             'entries' => $entries, 
         	'subtitle' => $tag ? sprintf(_("Pubblicati in %s"), \Gino\htmlChars($tag)) : '', 
         	'feed_url' => $this->link($this->_instance_name, 'feedRSS'), 
@@ -447,6 +449,7 @@ class blog extends \Gino\Controller {
 
         $dict = array(
             'instance_name' => $this->_instance_name,
+            'locale' => $this->_locale, 
         	'feed_url' => $this->link($this->_instance_name, 'feedRSS'),
             'items' => $entries,
             'autostart' => $this->_showcase_auto_start,
@@ -478,9 +481,9 @@ class blog extends \Gino\Controller {
         $this->_registry->addJs($this->_class_www."/blog.js");
         $this->_registry->js_load_sharethis = true;
 
-        $title = \Gino\attributeVar($entry->title.' | '.$this->_registry->title);
+        $title = \Gino\attributeVar($entry->ml('title').' | '.$this->_registry->title);
         $this->_registry->title = $title;
-        $this->_registry->description = \Gino\attributeVar(\Gino\cutHtmlText($entry->text, 155, '...', true, false, true, array()));
+        $this->_registry->description = \Gino\attributeVar(\Gino\cutHtmlText($entry->ml('text'), 155, '...', true, false, true, array()));
         // facebook
         $this->_registry->addMeta(array(
           'property' => 'og:title',
@@ -488,7 +491,7 @@ class blog extends \Gino\Controller {
         ));
         $this->_registry->addMeta(array(
           'property' => 'og:description',
-          'content' => \Gino\cutHtmlText($entry->text, 297, '...', true, false, true)
+          'content' => \Gino\cutHtmlText($entry->ml('text'), 297, '...', true, false, true)
         ));
         $this->_registry->addMeta(array(
           'property' => 'og:type',
@@ -513,7 +516,7 @@ class blog extends \Gino\Controller {
         ));
         $this->_registry->addMeta(array(
           'name' => 'twitter:description',
-          'content' => \Gino\cutHtmlText($entry->text, 200, '...', true, false, true)
+          'content' => \Gino\cutHtmlText($entry->ml('text'), 200, '...', true, false, true)
         ));
         $this->_registry->addMeta(array(
           'name' => 'twitter:url',
@@ -530,6 +533,7 @@ class blog extends \Gino\Controller {
 
         $dict = array(
             'instance_name' => $this->_instance_name,
+            'locale' => $this->_locale, 
             'entry' => $entry,
         	'image' => $entry->image ? $entry->imgPath($this) : null, 
             'related_contents_list' => $this->relatedContentsList($entry),

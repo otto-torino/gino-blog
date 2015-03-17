@@ -6,6 +6,7 @@
  *
  * Variabili disponibili:
  * - **instance_name**: nome dell'istanza
+ * - **locale**: oggetto Locale
  * - **feed_url**: url feed rss
  * - **entries**: array di oggetti di tipo BlogEntry
  * - **archive_url**: url archivio completo
@@ -23,7 +24,7 @@
 <section id="blog-last-<?= $instance_name ?>">
 <section>
 	<header class="clearfix">
-		<h1 class="left"><?= _('Blog') ?></h1>
+		<h1 class="left"><?= ucfirst($locale->get('blog')) ?></h1>
 		<a href="<?= $feed_url ?>" class="fa fa-rss pull-right"></a>
 	</header>
 	<? if(count($entries)): ?>
@@ -44,8 +45,8 @@
             <?= \Gino\cutHtmlText($entry->text, '200', '...'. false, false, false, null) ?>
         </article>
 		<? endforeach ?>
-		<p class="archive"><a href="<?= $archive_url ?>"><?= _('archivio') ?></a></p>
+		<p class="archive"><a href="<?= $archive_url ?>"><?= $locale->get('archive') ?></a></p>
 	<? else: ?>
-		<p><?= _('Non risultano post') ?></p>
+		<p><?= $locale->get('no_results') ?></p>
 	<? endif ?>
 </section>

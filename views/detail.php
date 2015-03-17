@@ -6,6 +6,7 @@
  *
  * Variabili disponibili:
  * - **instance_name**: nome dell'istanza
+ * - **locale**: oggetto Locale
  * - **entry**: oggetto BlogEntry
  * - **image**: percorso dell'immagine
  * - **share**
@@ -32,18 +33,18 @@
         <div class="col-md-7">
             <article>
                 <header>
-                    <h1><?= $entry->title ?></h1>
+                    <h1><?= $entry->ml('title') ?></h1>
                     <div class="blog-post-info">
 						<p><span class="fa fa-calendar pull-left"></span> <time pubdate><?= \Gino\dbDatetimeToDate($entry->creation_date, '/') ?></time> <span class="pipe">|</span> <span class="fa fa-tag"></span> <?= $entry->linkedTags() ?> <span class="pipe">|</span> <span class="fa fa-eye"></span> <?= $entry->read ?></p>
                         <? if($disqus_shortname and $entry->enable_comments): ?>
-                            <p><span class="fa fa-comment"></span> <a href="<?php echo $entry->getAbsoluteUrl() ?>#disqus_thread"><?php echo _('commenti') ?></a></p>
+                            <p><span class="fa fa-comment"></span> <a href="<?php echo $entry->getAbsoluteUrl() ?>#disqus_thread"><?php echo $locale->get('comments') ?></a></p>
                         <?php endif ?>
                     </div>
                 </header>
                 <?php  if($image): ?>
                 	<img class="img-responsive" src="<?= $image ?>" />
                 <? endif ?>
-                <?= $entry->text ?>
+                <?= $entry->ml('text') ?>
                 <? if($disqus_shortname and $entry->enable_comments): ?>
                     <aside class=comments>
                          <div id="disqus_thread"></div>
