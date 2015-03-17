@@ -5,6 +5,7 @@
 *
 * Variabili disponibili:
 * - **instance_name**: string, nome istanza modulo
+* - **locale**: oggetto Locale
 * - **items**: array, oggetti di tipo @ref Gino.App.Blog.BlogEntry
 * - **feed_url**: string, url ai feed RSS
 * - **autostart**: bool, opzione autostart
@@ -20,7 +21,7 @@
 <? //@cond no-doxygen ?>
 <section id="blog-showcase-<?= $instance_name ?>">
     <h1>
-        <?= _('Blog') ?>
+        <?= ucfirst($locale->get('blog')) ?>
         <? if($feed_url): ?>
             <a href="<?= $feed_url ?>" class="fa fa-rss"></a>
         <? endif ?>

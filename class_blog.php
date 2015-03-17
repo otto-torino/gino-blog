@@ -388,8 +388,7 @@ class blog extends \Gino\Controller {
      */
     public function archive(\Gino\Http\Request $request) {
 
-        $title = _('Archivio blog').' | '.$this->_registry->sysconf->head_title;
-
+        $title = $this->_locale->get('meta_archive_title').' | '.$this->_registry->sysconf->head_title;
         $this->_registry->addCss($this->_class_www."/blog_".$this->_instance_name.".css");
         $this->_registry->title = \Gino\jsVar($title);
         $this->_registry->addHeadLink(array(
@@ -450,6 +449,7 @@ class blog extends \Gino\Controller {
 
         $dict = array(
             'instance_name' => $this->_instance_name,
+            'locale' => $this->_locale, 
         	'feed_url' => $this->link($this->_instance_name, 'feedRSS'),
             'items' => $entries,
             'autostart' => $this->_showcase_auto_start,
@@ -533,6 +533,7 @@ class blog extends \Gino\Controller {
 
         $dict = array(
             'instance_name' => $this->_instance_name,
+            'locale' => $this->_locale, 
             'entry' => $entry,
         	'image' => $entry->image ? $entry->imgPath($this) : null, 
             'related_contents_list' => $this->relatedContentsList($entry),

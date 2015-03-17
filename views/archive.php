@@ -51,7 +51,7 @@
                                     <?php endif ?>
                                 </div>
                             </header>
-                            <?= \Gino\cutHtmlText(\Gino\htmlChars($entry->ml('text')), 420, "<a href=\"".$entry->getUrl()."\" class=\"btn btn-primary\">"._('continua')." &raquo;</a>", false, false, true, null) ?>
+                            <?= \Gino\cutHtmlText(\Gino\htmlChars($entry->ml('text')), 420, "<a href=\"".$entry->getUrl()."\" class=\"btn btn-primary\">".$locale->get('go_to_detail')." &raquo;</a>", false, false, true, null) ?>
                         </article>
                         <hr />
                     <? endforeach ?>
