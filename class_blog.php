@@ -528,7 +528,7 @@ class blog extends \Gino\Controller {
 
         $share = \Gino\shareAll(
         	array('facebook_large', 'twitter_large', 'linkedin_large', 'googleplus_large', 'pinterest_large', 'evernote_large', 'email_large'), 
-        	$request->root_absolute_url.$this->link($this->_instance_name, 'detail', array('id'=>$entry->slug), '', array('abs'=>true)), 
+        	$this->link($this->_instance_name, 'detail', array('id'=>$entry->slug), '', array('abs'=>true)), 
         	\Gino\htmlChars($entry->ml('title')));
 
         $dict = array(
