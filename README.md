@@ -2,7 +2,7 @@ Modulo blog per gino CMS by Otto Srl, MIT license {#mainpage}
 ==============================================================
 Libreria per la gestione di un blog.
 La documentazione per lo sviluppatore è contenuta all'interno della directory doc.
-La documentazione dell'ultima versione disponibile (1.0.0) si trova qui:
+La documentazione dell'ultima versione disponibile si trova all'indirizzo:
 
 http://otto-torino.github.io/gino-blog/
 
@@ -53,4 +53,9 @@ Per installare questa libreria seguire la seguente procedura:
 RELEASES
 ------------------------------
 
-- 2014/12/22 | v 1.0.0 | Richiede gino 2.0.0
+- 2014/12/22 | v 1.0.0 | Richiede gino 2.0.0   
+- 2015/03/17 | v 1.0.1 | Hotfix   
+
+Copyright
+------------------------------
+Copyright © 2014-2015 [Otto srl](http://www.otto.to.it), [MIT License](http://opensource.org/licenses/MIT)
